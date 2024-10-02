@@ -24,4 +24,4 @@ print(mylist)
 
 #add any iterable 
 mylist.extend(tuple(tropical))
-print(mylist);
+print(mylist)
