@@ -58,8 +58,8 @@ To run the code in this repository, you need to set up your environment with the
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/data-science-course.git
-    cd data-science-course
+    git clone https://github.com/MikeySharma/data-science.git
+    cd data-science
     ```
 
 2. Set up a virtual environment and install dependencies:
