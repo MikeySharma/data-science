@@ -1,20 +1,26 @@
 import pandas as pd
-from sklearn import linear_model
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
+
 scale = StandardScaler()
 df = pd.read_csv('cars2.csv')
-x = df[['Weight', 'Volume']]
-y = df[['CO2']]
-scaledX = scale.fit_transform(x)
+X = df.drop(['Car', 'Model', 'CO2'], axis=1)
 
-model = LinearRegression()
-model.fit(x, y)
+#Overwriting X by Scaling it
+X = scale.fit_transform(X)
 
-modelTrainedWithoutScaling = LinearRegression()
-modelTrainedWithoutScaling.fit(scaledX, y)
+y = df['CO2']
 
-yPredict = model.predict([[2300, 1.3]])
-y2Predict = modelTrainedWithoutScaling.predict([[2300, 1.3]])
-print(yPredict, y2Predict)
 
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LogisticRegression()
+
+model.fit(x_train, y_train)
+
+y_pred = model.predict(x_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy}")
