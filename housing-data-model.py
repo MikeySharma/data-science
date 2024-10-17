@@ -9,7 +9,7 @@ from sklearn.metrics import mean_squared_error
 
 
 
-df = pd.read_csv('./housing.csv')
+df = pd.read_csv('./data-sets/housing.csv')
 df = df.dropna()
 df['ocean_proximity'].replace(['NEAR BAY', '<1H OCEAN', 'INLAND', 'NEAR OCEAN', 'ISLAND'], [0, 1, 2, 3, 4], inplace=True)
 # print(df.head())
